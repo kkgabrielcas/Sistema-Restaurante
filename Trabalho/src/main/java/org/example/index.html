@@ -1,0 +1,42 @@
+<!-- checa a imagem que foi salva no banco usando a classe "Main" e exibe -->
+
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Site</title>
+    <style>
+        body {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            background-color: #f5f5f5;
+        }
+        img {
+            max-width: 100%;
+            height: auto;
+            border: 2px solid #333;
+        }
+    </style>
+</head>
+<body>
+<div id="image-container">
+    <img id="firebase-image">
+</div>
+
+<script>
+    const imageUrl = 'https://firebasestorage.googleapis.com/v0/b/uuyt-2487d.appspot.com/o/imagens%2Fimagem.jpg?alt=media&token=c0b2e40b-421c-401e-b651-1cc9d0d30fa0';
+
+    function updateImage() {
+        const imgElement = document.getElementById('firebase-image');
+        imgElement.src = imageUrl + '?' + new Date().getTime();
+    }
+
+    updateImage();
+
+    setInterval(updateImage, 5000);
+</script>
+</body>
+</html>
