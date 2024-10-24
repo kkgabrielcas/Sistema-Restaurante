@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cardápio</title>
+  <style>
+    .food-frame {
+        width: 200px;
+        height: 250px;
+        border: 1px solid black;
+        margin: 20px;
+        position: relative;
+        display: inline-block;
+    }
+    .food-frame img {
+        width: 100%;
+        height: 80%;
+    }
+    .food-name {
+        width: 100%;
+        height: 20%;
+        background-color: #f8f8f8;
+        text-align: center;
+        position: absolute;
+        bottom: 0;
+        font-weight: bold;
+    }
+  </style>
+</head>
+<body>
+
+<h1>Cardápio</h1>
+<div id="food-container" style="display: flex; flex-wrap: wrap;"></div>
+
+<script>
+
+  async function fetchFoods() {
+      try {
+          const response = await fetch('http://localhost:8080/food');
+          const foods = await response.json();
+          displayFoods(foods);
+      } catch (error) {
+          console.error(error);
+      }
+  }
+
+
+  function displayFoods(foods) {
+      const container = document.getElementById('food-container');
+      foods.forEach(food => {
+          const foodFrame = document.createElement('div');
+          foodFrame.className = 'food-frame';
+
+          const frameImg = document.createElement('img');
+          frameImg.src = '/images/frame.png';
+
+          const foodName = document.createElement('div');
+          foodName.className = 'food-name';
+          foodName.innerText = food.nome;
+
+
+          foodFrame.appendChild(frameImg);
+          foodFrame.appendChild(foodName);
+          container.appendChild(foodFrame);
+      });
+  }
+
+  window.onload = fetchFoods;
+</script>
+
+</body>
+</html>
