@@ -19,8 +19,8 @@ body {
 .menu-item {
   background-color: #fff;
   border-radius: 8px;
-  width: 200px;
-  height: 250px;
+  width: 230px;
+  height: 350px;
   margin-bottom: 10px;
   margin-right: 20px;
   padding: 6px;
@@ -43,7 +43,8 @@ body {
   color: #555;
 }
 
-.menu-item button {
+.menu-item button,
+.botao-finalizar {
   background-color: #000000;
   color: #fff;
   border: none;
@@ -57,4 +58,109 @@ body {
 
 .menu-item button:hover {
   background-color: #333;
+}
+
+.carrinho-container {
+  position: fixed;
+  top: 10px;
+  right: 10px;
+  z-index: 1000;
+}
+
+.carrinho-icone {
+  font-size: 24px;
+  cursor: pointer;
+  background-color: #fff;
+  padding: 10px;
+  border-radius: 50%;
+  box-shadow: 0 0 5px rgba(0, 0, 0, 0.3);
+}
+
+.carrinho-detalhado {
+  display: none;
+  position: absolute;
+  top: 50px;
+  right: 0;
+  background-color: #fff;
+  width: 300px;
+  border-radius: 8px;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+  padding: 20px;
+}
+
+.carrinho-detalhado h3 {
+  margin-bottom: 10px;
+}
+
+.carrinho-detalhado ul {
+  list-style: none;
+  padding: 0;
+}
+
+.carrinho-detalhado li {
+  margin-bottom: 8px;
+}
+
+.carrinho-detalhado p {
+  font-weight: bold;
+}
+
+.carrinho-aberto .carrinho-detalhado {
+  display: block;
+}
+
+.menu-item input[type="number"] {
+  width: 60px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  text-align: center;
+}
+
+.modal {
+  display: none;
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.modal-content {
+  background-color: #fff;
+  padding: 20px;
+  border-radius: 8px;
+  text-align: center;
+  box-shadow: 0 0 10px rgba(0, 0, 0, 0.3);
+}
+
+.modal-content button {
+  margin: 10px;
+  padding: 10px 20px;
+  background-color: #000000;
+  color: #fff;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.quantidade-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 10px;
+}
+
+.quantidade-container label {
+  margin-right: 5px;
+  font-size: 12px;
+  color: #555;
+}
+
+.quantidade-container input[type="number"] {
+  width: 50px; /* Ajuste para diminuir o tamanho do input */
+  text-align: center;
+  padding: 2px;
 }
