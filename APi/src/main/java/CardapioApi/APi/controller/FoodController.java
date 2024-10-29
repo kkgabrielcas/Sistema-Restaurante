@@ -11,7 +11,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 @RestController
-@CrossOrigin(origins = "http://localhost:3306")
+@CrossOrigin(origins = "http://localhost:8080")
 @RequestMapping("/food")
 public class FoodController {
 
@@ -25,6 +25,7 @@ public class FoodController {
         dataFood.setPreco(data.getPreco());
         dataFood.setEstoque(data.getEstoque());
         dataFood.setDescricao(data.getDescricao());
+        dataFood.setImagem(data.getImagem());
 
         foodRepository.save(dataFood);
     }

@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="css.css">
+    <title>Adicionar Pedido</title>
+</head>
+<body>
+    <div class="form-container">
+        <h2>Adicionar Pedido</h2>
+        <form id="pedido-form">
+            <div class="form-group">
+                <label for="nome">Nome do Item:</label>
+                <input type="text" id="nome" required />
+            </div>
+            <div class="form-group">
+                <label for="preco">Preço:</label>
+                <input type="text" id="preco" required />
+            </div>
+            <div class="form-group">
+                <label for="quantidade">Quantidade:</label>
+                <input type="number" id="quantidade" min="1" required />
+            </div>
+            <div class="form-group">
+                <label for="descricao">Descrição:</label>
+                <textarea id="descricao" required></textarea>
+            </div>
+            <div class="form-group">
+                <label for="imagem">Imagem:</label>
+                <input type="file" id="imagem" accept="image/*" required />
+            </div>
+            <button type="submit">Adicionar Pedido</button>
+        </form>
+    </div>
+
+    <script>
+        document.getElementById('pedido-form').addEventListener('submit', async function(event) {
+            event.preventDefault(); // Previne o envio padrão do formulário
+
+            const nome = document.getElementById('nome').value;
+            const preco = document.getElementById('preco').value;
+            const quantidade = document.getElementById('quantidade').value;
+            const descricao = document.getElementById('descricao').value;
+            const imagemInput = document.getElementById('imagem');
+
+            if (imagemInput.files.length > 0) {
+                const imagemFile = imagemInput.files[0];
+
+                const formData = new FormData();
+                formData.append('nome', nome);
+                formData.append('preco', preco);
+                formData.append('quantidade', quantidade);
+                formData.append('descricao', descricao);
+                formData.append('imagem', imagemFile);
+
+                try {
+                    const response = await fetch('http://localhost:8080/food', {
+                        method: 'POST',
+                        body: formData
+                    });
+
+                    if (response.ok) {
+                        alert('Pedido adicionado com sucesso!');
+                        document.getElementById('pedido-form').reset();
+                    } else {
+                        alert('Erro ao adicionar pedido.');
+                    }
+                } catch (error) {
+                    console.error('', error);
+                }
+            } else {
+                alert('Por favor, selecione uma imagem.');
+            }
+        });
+    </script>
+</body>
+</html>

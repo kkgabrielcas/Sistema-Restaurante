@@ -28,12 +28,16 @@ public class Food {
     @Column(name = "descricao")
     private String descricao;
 
-    // Construtor com parâmetros
-    public Food(Long id, String nome, double preco, int estoque, String descricao) {
+    @Column(name = "imagem")
+    private String imagem;
+
+
+    public Food(Long id, String nome, double preco, int estoque, String descricao, String imagem) {
         this.id = id;
         this.nome = nome;
         this.preco = preco;
         this.estoque = estoque;
         this.descricao = descricao;
+        this.imagem = imagem;
     }
 }

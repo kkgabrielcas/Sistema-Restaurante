@@ -11,7 +11,8 @@ public class FoodMapper {
                 food.getNome(),
                 food.getPreco(),
                 food.getEstoque(),
-                food.getDescricao()
+                food.getDescricao(),
+                food.getImagem()
         );
     }
 }

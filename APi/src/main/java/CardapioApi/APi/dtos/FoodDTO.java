@@ -12,4 +12,5 @@ public class FoodDTO {
     private double preco;
     private int estoque;
     private String descricao;
+    private String imagem;
 }
