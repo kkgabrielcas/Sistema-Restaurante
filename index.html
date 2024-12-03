@@ -79,9 +79,15 @@
     <div class="modal" id="modal-pagamento">
       <div class="modal-content">
         <h3>Escolha a forma de pagamento</h3>
-        <button onclick="escolherFormaPagamento('Dinheiro')">Dinheiro</button>
-        <button onclick="escolherFormaPagamento('Cartão')">Cartão</button>
-        <button onclick="escolherFormaPagamento('PIX')">PIX</button>
+        <button onclick="mostrarDetalhesPagamento('Dinheiro')">Dinheiro</button>
+        <button onclick="mostrarDetalhesPagamento('Cartão')">Cartão</button>
+        <button onclick="mostrarDetalhesPagamento('PIX')">PIX</button>
+      </div>
+    </div>
+
+    <div class="modal" id="modal-detalhes-pagamento">
+      <div class="modal-content" id="detalhes-pagamento-content">
+        <!-- O conteúdo será preenchido dinamicamente -->
       </div>
     </div>
 
