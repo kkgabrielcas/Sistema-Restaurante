@@ -76,20 +76,57 @@ function resetarCarrinho() {
   atualizarCarrinho(); // Atualiza a interface do carrinho
 }
 
-function escolherFormaPagamento(metodo) {
-  if (metodo === "Dinheiro" || metodo === "Cartão") {
-    alert("O garçom foi chamado para ir até sua mesa.");
+function mostrarDetalhesPagamento(metodo) {
+  const modalDetalhes = document.getElementById("modal-detalhes-pagamento");
+  const detalhesContent = document.getElementById("detalhes-pagamento-content");
+
+  // Define o conteúdo com base na forma de pagamento
+  let conteudo = "";
+  if (metodo === "Dinheiro") {
+    conteudo = `
+      <h3>Pagamento em Dinheiro</h3>
+      <br>
+      <p>O garçom será notificado para receber o pagamento na mesa.</p>
+      <br>
+      <button onclick="fecharModalDetalhes()">Fechar</button>
+    `;
+  } else if (metodo === "Cartão") {
+    conteudo = `
+      <h3>Pagamento com Cartão</h3>
+      <br>
+      <p>O garçom será notificado para levar a máquina de cartão à mesa.</p>
+      <br>
+      <button onclick="fecharModalDetalhes()">Fechar</button>
+    `;
   } else if (metodo === "PIX") {
-    const valorTotal = total.toFixed(2);
-    alert(`Valor total: R$ ${valorTotal}\nFaça o PIX para: (85) 98613-9769`);
+    conteudo = `
+      <h3>Pagamento via PIX</h3>
+      <br>
+      <p>Valor total: R$ ${total.toFixed(2)}</p>
+      <br>
+      <p>Escaneie o QR Code abaixo para realizar o pagamento:</p>
+      <img src="./src/main/resources/imagem/qrcode-pix.jpg" alt="QR Code PIX" style="width: 200px; height: 200px; margin: 10px auto;">
+      <br>
+      <button onclick="fecharModalDetalhes()">Fechar</button>
+    `;
   }
 
-  // Reseta o carrinho após o pagamento
+  // Atualiza o conteúdo do modal e exibe
+  detalhesContent.innerHTML = conteudo;
+  modalDetalhes.style.display = "flex";
+}
+
+function fecharModalDetalhes() {
+  // Fecha o modal de detalhes de pagamento
+  const modalDetalhes = document.getElementById("modal-detalhes-pagamento");
+  modalDetalhes.style.display = "none";
+
+  const modalPrincipal = document.getElementById("modal-pagamento");
+  modalPrincipal.style.display = "none";
+
+  // Reseta o carrinho
   resetarCarrinho();
 
-  // Fecha o modal
-  fecharModal();
-
-  // atualizar página
-  location.reload();
+  // Atualiza a interface do carrinho
+  atualizarCarrinho();
 }
